@@ -116,7 +116,7 @@ class TicTacToe:
 
     def print_board(self):
         #easy print functions to get a Matrix for playing
-        print(" ", "1", "2", "3")
+        print(" ", "  1   ", "2   ", "3")
         for i in range(len(self.board)):
             print(i + 1, self.board[i])
 
