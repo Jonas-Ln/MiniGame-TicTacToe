@@ -42,7 +42,7 @@ class TicTacToe:
             print(f"Input {self.row, self.col} is invalid please choose a number between 1 and 3 for each")
             self.row, self.col = int(input("Input the row of your choice: ")), int(input("Input a column of your choice: "))
 
-        #ctrim by one because a list starts at 0
+        # trim by one because a list starts at 0
         self.row, self.col = self.row -1, self.col-1
 
         # check if the input was used before
