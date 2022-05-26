@@ -23,6 +23,7 @@ class TicTacToe:
             self.player = "computer"
 
     def next_player(self):
+        #rotate players turns
         if self.player == "computer":
             self.player = "player"
         else:
@@ -30,7 +31,7 @@ class TicTacToe:
 
 
     def get_input(self):
-
+        # ask for input and account for exceptions
         try:
             self.row, self.col = int(input("Input the row of your choice: ")), int(input("Input a column of your choice: "))
         except:
@@ -55,6 +56,7 @@ class TicTacToe:
         return True
 
     def new_turn(self):
+        # initate and play the next turn
         print(f"Its the {self.player}'s turn")
         self.print_board()
         if self.player == "player":
@@ -65,6 +67,8 @@ class TicTacToe:
                 pass
 
     def random_choice(self):
+        #the computer chooses randomly
+        #could be modified to make it harder or impossible to win for the player
         self.row = random.randint(0,2)
         self.col = random.randint(0,2)
         if (self.row, self.col) not in self.inputs:
@@ -73,6 +77,7 @@ class TicTacToe:
         return False
 
     def players_symbol(self):
+        #set symbols for players
         if self.player == "player":
             return "x"
         if self.player == "computer":
@@ -87,7 +92,7 @@ class TicTacToe:
         list = []
         count_rows = 0
         count_cols = 0
-
+        # Check if rows or columns are Won
         for i in range(len(self.board)):
             for j in range(len(self.board)):
                 if self.board[i][j] == self.players_symbol():
@@ -95,12 +100,11 @@ class TicTacToe:
                     count_rows += 1
                 if self.board[j][i] == self.players_symbol():
                     count_cols += 1
-
                 if count_rows == 3 or count_cols ==3:
                     return True
             count_rows = 0
             count_cols = 0
-
+        #check if diagonals are "Won"
         count = 0
         for i in range(len(diagonal_list)):
             for j in range(len(diagonal_list[i])):
@@ -115,8 +119,10 @@ class TicTacToe:
             print(self.board[i])
 
     def start_game(self):
+        #initialize the Game
         self.get_starting_player()
         self.initialize_board()
+        #play the game
         for i in range(9):
             self.new_turn()
             self.set_input()
@@ -132,7 +138,6 @@ class TicTacToe:
         print ("No one WON, you can start a new Session now")
 
 
-        # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     tic_tac_toe=TicTacToe()
     tic_tac_toe.start_game()
